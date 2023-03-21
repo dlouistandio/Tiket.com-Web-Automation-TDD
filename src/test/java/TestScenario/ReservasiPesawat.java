@@ -30,6 +30,7 @@ public class ReservasiPesawat {
         page.pesawatPage();
         page.departureDate();
         page.returnDate();
+        page.selectPenumpang();
     }
 
     @AfterTest
