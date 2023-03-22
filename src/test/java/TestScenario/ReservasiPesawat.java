@@ -28,9 +28,12 @@ public class ReservasiPesawat {
     public void reservasiTiket() throws InterruptedException{
         ReservasiPesawatPage page = new ReservasiPesawatPage(driver);
         page.pesawatPage();
+        page.flightFrom();
+        page.flightTo();
         page.departureDate();
         page.returnDate();
         page.selectPenumpang();
+        page.searchFlight();
     }
 
     @AfterTest

@@ -1,9 +1,12 @@
 package PageObjects;
 
+import gherkin.lexer.Th;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.security.Key;
 import java.util.List;
 
 
@@ -31,15 +34,14 @@ public class ReservasiPesawatPage {
         Thread.sleep(1000);
     }
 
-    public void flightFrom(){
+    public void flightFrom() throws InterruptedException {
         driver.findElement(flightFrom).click();
-        driver.findElement(flightFrom).sendKeys("jakarta");
-
-        List<WebElement> airportCode = driver.findElements();
+        driver.findElement(flightFrom).sendKeys("jakarta", Keys.ENTER);
     }
 
     public void flightTo(){
-
+        driver.findElement(flightTo).click();
+        driver.findElement(flightTo).sendKeys("banjarmasin", Keys.ENTER);
     }
 
     public void departureDate() throws InterruptedException{
@@ -98,14 +100,19 @@ public class ReservasiPesawatPage {
         }
     }
 
-    public void selectPenumpang() throws InterruptedException{
+    public void selectPenumpang(){
         List<WebElement> allClass = driver.findElements(pilihKelas);
         for (WebElement penumpang:allClass){
             if (penumpang.getText().equals("Premium Ekonomi")){
                 penumpang.click();
-                break;
+                driver.findElement(By.xpath("//button[@class='v3-btn btn-done']")).click();
             }
         }
+    }
+
+    public void searchFlight()throws InterruptedException{
+        driver.findElement(By.xpath("//button[@class='v3-btn v3-btn__yellow']")).click();
+        Thread.sleep(5000);
     }
 }
 
